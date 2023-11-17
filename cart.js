@@ -7,7 +7,6 @@
     creating customer objects.  
 */
 
-
 //////////////////PROBLEM 1////////////////////
 /*  
     Below is a cart array that has food objects
@@ -19,24 +18,23 @@
 */
 
 const cart = [
-    {
-        name: 'pizza', 
-        price: 9.99
-    }, 
-    {
-        name: 'pasta', 
-        price: 8.99
-    }, 
-    {
-        name: 'salad', 
-        price: 7.99
-    }
-]
+  {
+    name: "pizza",
+    price: 9.99,
+  },
+  {
+    name: "pasta",
+    price: 8.99,
+  },
+  {
+    name: "salad",
+    price: 7.99,
+  },
+];
 
 //CODE HERE
-
-// const summedPrice = cart.reduce(/* CALLBACK HERE */)
-
+const summedPrice = cart.reduce((acc, curr) => acc + curr.price, 0);
+console.log(summedPrice);
 
 //////////////////PROBLEM 2////////////////////
 /*  
@@ -54,9 +52,11 @@ const cart = [
 */
 
 //CODE HERE
-
-
-
+const calcFinalPrice = (cartTotal, couponValue, tax) => {
+  let taxAmount = cartTotal * tax;
+  let totalPrice = cartTotal + taxAmount - couponValue;
+  return totalPrice;
+};
 //////////////////PROBLEM 3////////////////////
 /*  
     In this problem, you'll create a model for 
@@ -79,6 +79,10 @@ const cart = [
 
 /*
     TEXT ANSWER HERE
+    firstName = string; need a name for the table
+    lastName = string;  just incase 2 Tonys come in 
+    age = number;       for drinks or to verify if 3 tonys came in 
+    cardNumber = number; to hold the table 
 
 */
 
@@ -88,3 +92,11 @@ const cart = [
 */
 
 //CODE HERE
+class Customer {
+  constructor(firstName, lastName, age, cardNumber) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.age = age;
+    this.cardNumber = cardNumber;
+  }
+}
