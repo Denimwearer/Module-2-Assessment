@@ -30,16 +30,14 @@
 */
 
 //CODE HERE
-class Pizza {
-  constructor(name, price, catergory, popularity, rating, tags) {
-    this.name = name;
-    this.price = price;
-    this.catergory = catergory;
-    this.popularity = popularity;
-    this.rating = rating;
-    this.tags = tags;
-  }
-}
+const Pizza = {
+  name: "Vegan cheese",
+  price: 9.99,
+  catergory: "entree",
+  popularity: 10,
+  rating: 75,
+  tags: ["gluten-free", "soy-free", "dairy free"],
+};
 
 //////////////////PROBLEM 2////////////////////
 /* 
@@ -68,7 +66,7 @@ console.log(Pizza.popularity);
 */
 
 //CODE HERE
-const price = Pizza.price;
+const { price } = Pizza;
 console.log(price);
 /*
     Fourth, and last, destructure the category
@@ -97,42 +95,42 @@ const foodArr = [
   {
     name: "Jerk Chicken",
     price: 12.99,
-    catergory: "Jamaican",
+    catergory: "entree",
     popularity: 8,
     ratings: 100,
-    tags: ["dairy free", "soy free", "egg free"],
-  },
-  {
-    name: "Turkey burger",
-    price: 9.99,
-    catergory: "American",
-    popularity: 10,
-    ratings: 75,
     tags: ["soy free", "egg free"],
   },
   {
-    name: "Chips & Salsa",
+    name: "Garlic knots",
+    price: 9.99,
+    catergory: "appetizer",
+    popularity: 10,
+    ratings: 75,
+    tags: ["soy free", "egg free", "dairy free"],
+  },
+  {
+    name: "Cinnastix",
     price: 2.99,
-    catergory: "Mexican",
+    catergory: "appetizer",
     popularity: 10,
     ratings: 98,
     tags: ["dairy free", "soy free", "egg free"],
   },
   {
-    name: "Fried Chicken & Fried Rice",
+    name: "Meat Lovers",
     price: 10.99,
-    catergory: "Chinese",
+    catergory: "entree",
     popularity: 10,
     ratings: 76,
-    tags: ["dairy free", "soy free", "egg free"],
+    tags: ["soy free", "egg free"],
   },
   {
-    name: "Chicken Stew & Potatoes",
+    name: "Veggies",
     price: 13.99,
-    catergory: "Ethopian",
+    catergory: "entree",
     popularity: 10,
     ratings: 50,
-    tags: ["dairy free", "soy free", "egg free"],
+    tags: ["soy free", "egg free"],
   },
 ];
 //////////////////PROBLEM 4////////////////////
@@ -195,14 +193,13 @@ console.log(filteredFood);
 
 //CODE HERE
 const filterByProperty = (property, number, type) => {
-  const filteredArray = foodArr.filter((element) => {
-    if (type === "above") {
-      return element.property > number;
-    } else {
-      return element.property < number;
-    }
-  });
-  return filteredArray;
+  let filterArray = [];
+  if (type === "above") {
+    filterArray = foodArr.filter((element) => element[property] > number);
+  } else {
+    filterArray = foodArr.filter((element) => element[property] < number);
+  }
+  return filterArray;
 };
 /*
     Invoke the `filterByProperty` function passing
@@ -212,6 +209,4 @@ const filterByProperty = (property, number, type) => {
 */
 
 //CODE HERE
-filterByProperty("12.99", 12.99, "above");
-
-console.log(filterByProperty);
+console.log(filterByProperty("popularity", 9, "below"));
